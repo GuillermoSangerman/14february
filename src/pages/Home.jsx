@@ -11,6 +11,7 @@ function Home() {
 
     const [valueSi, setValueSi] = useState(false)
 
+    
     const randomResponse = () => {
         let index = Math.floor(Math.random() * 11);
         console.log(random[index])
@@ -20,19 +21,28 @@ function Home() {
         setRandomValor(random[index]);
     }
 
+    function playAudio() {
+        document.querySelector('.audio').play()
+    }
+
     const handleImageLoad = () => {
         setImagenCargada(true);
     }
     return (
-        <main 
-            id="canvas" 
-            className="fondo w-full min-h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center">
+        <main
+            id="canvas"
+            className="fondo w-full min-h-screen bg-no-repeat bg-cover flex items-center justify-center bg-center"
+            onClick={playAudio}
+            >
+            <audio  className="audio" loop>
+                <source src="/musicFondo1.mp3" type="audio/mpeg" />
+            </audio>
             {
                 !valueSi ? (
                     <div className="p-5 mt-5 ">
                         <h1 className="text-red-600  font-bold text-5xl text-center font-serif move-up">
-                            ¿Quieres Ser Mi San Valentin?                           
-                            </h1>
+                            ¿Quieres Ser Mi San Valentin?
+                        </h1>
                         <img src={Object.keys(randomValor).length === 0 ?
                             "https://i.pinimg.com/originals/db/aa/c1/dbaac13f6278b91a15e480752b8a7242.gif" : randomValor.img}
                             alt="San Valentin" className="mx-auto visible-animation" width={400} height={400} />
